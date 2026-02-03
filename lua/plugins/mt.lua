@@ -13,7 +13,7 @@ return {
         '<leader>a',
         function()
           local harpoon = require 'harpoon'
-          harpoon:list():append()
+          harpoon:list():add()
         end,
         desc = 'Add to Harpoon',
       },
@@ -26,7 +26,7 @@ return {
         desc = 'Toggle Harpoon Quick Menu',
       },
       {
-        '<C-h>',
+        '<leader>hq',
         function()
           local harpoon = require 'harpoon'
           harpoon:list():select(1)
@@ -34,7 +34,7 @@ return {
         desc = 'which_key_ignore',
       },
       {
-        '<C-t>',
+        '<leader>hw',
         function()
           local harpoon = require 'harpoon'
           harpoon:list():select(2)
@@ -42,7 +42,7 @@ return {
         desc = 'which_key_ignore',
       },
       {
-        '<C-n>',
+        '<leader>hf',
         function()
           local harpoon = require 'harpoon'
           harpoon:list():select(3)
@@ -50,7 +50,7 @@ return {
         desc = 'which_key_ignore',
       },
       {
-        '<C-s>',
+        '<leader>hp',
         function()
           local harpoon = require 'harpoon'
           harpoon:list():select(4)
@@ -60,4 +60,17 @@ return {
     },
   },
   { 'taybart/b64.nvim' },
+
+  { -- Adds git related signs to the gutter, as well as utilities for managing changes
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+    },
+  },
 }
