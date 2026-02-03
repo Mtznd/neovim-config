@@ -1,16 +1,3 @@
-vim.o.number = true
-vim.wo.relativenumber = true
-vim.o.shell = 'nu.exe'
-vim.o.swapfile = false
-
-if vim.g.neovide then
-  vim.o.guifont = '0xProto Nerd Font Mono:h12'
-end
-
-if vim.fn.executable 'rg' == 1 then
-  vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
-end
-
 return {
   {
     'ThePrimeagen/harpoon',

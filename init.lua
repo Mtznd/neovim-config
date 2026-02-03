@@ -1,6 +1,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.o.number = true
+vim.o.shell = 'nu.exe'
+vim.o.swapfile = false
+vim.wo.relativenumber = true
+
 
 vim.o.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
@@ -68,6 +72,14 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+if vim.g.neovide then
+  vim.o.guifont = '0xProto Nerd Font Mono:h12'
+end
+
+if vim.fn.executable 'rg' == 1 then
+  vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
+end
 
 
 require('config.lazy')
