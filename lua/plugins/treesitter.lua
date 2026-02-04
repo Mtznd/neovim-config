@@ -1,17 +1,13 @@
 return {
-  {
+  { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    lazy = false,
-    build = ':TSUpdate',
     config = function()
-      require'nvim-treesitter.config'.compilers = { 'zig' }
-
-      local ts = require'nvim-treesitter'
-      ts.setup {
-        install_dir = vim.fn.stdpath('data') .. '/site',
-	highlight = {enabled = true}
-      }
-      ts.install{ 'lua' }
-    end
+      local filetypes = { 'nu','bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+      require('nvim-treesitter').install(filetypes)
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = filetypes,
+        callback = function() vim.treesitter.start() end,
+      })
+    end,
   },
 }
