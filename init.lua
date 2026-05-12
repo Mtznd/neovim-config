@@ -87,4 +87,5 @@ if vim.fn.executable 'rg' == 1 then
 end
 
 
-require('config.lazy')
+--require('config.lazy')
+require('config.vimpack')
