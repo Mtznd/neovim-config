@@ -71,7 +71,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 ---@type table<string, vim.lsp.Config>
 local servers = {
   -- clangd = {},
-  -- gopls = {},
+  gopls = {
+    --on_init = function(client)
+    --  vim.api.nvim_create_autocmd({ 'test' }, {
+    --    buffer = event.buf,
+    --    group = highlight_augroup,
+    --    callback = vim.lsp.buf.document_highlight,
+    --  })
+    --end
+  },
 
   stylua = {}, -- Used to format Lua code
 

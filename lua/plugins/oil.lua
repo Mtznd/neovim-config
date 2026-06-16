@@ -6,4 +6,8 @@ local oil_plugins = {
 vim.pack.add(oil_plugins)
 
 require('mini.icons').setup{}
-require('oil').setup {}
+require('oil').setup {
+  view_options = {
+    show_hidden = true
+  }
+}

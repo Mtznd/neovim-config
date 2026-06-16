@@ -1,7 +1,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.o.number = true
-vim.o.shell = 'nu.exe'
 vim.o.swapfile = false
 vim.wo.relativenumber = true
 
