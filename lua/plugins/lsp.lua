@@ -54,6 +54,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
           vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
         end,
       })
+
+      vim.diagnostic.config({
+          virtual_text = true,
+          signs = true,
+          underline = true,
+          severity_sort = true,
+      })
+
+
     end
 
     -- The following code creates a keymap to toggle inlay hints in your
