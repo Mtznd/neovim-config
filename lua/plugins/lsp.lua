@@ -81,13 +81,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local servers = {
   -- clangd = {},
   gopls = {
-    --on_init = function(client)
-    --  vim.api.nvim_create_autocmd({ 'test' }, {
-    --    buffer = event.buf,
-    --    group = highlight_augroup,
-    --    callback = vim.lsp.buf.document_highlight,
-    --  })
-    --end
+    on_init = function()
+      vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	  pattern = {'*.go'},
+	callback = function(ev)
+          local view = vim.fn.winsaveview()
+          vim.cmd("%!gofmt")
+          vim.fn.winrestview(view)
+	end
+      })
+    end
   },
 
   stylua = {}, -- Used to format Lua code
