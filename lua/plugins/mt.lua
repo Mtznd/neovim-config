@@ -5,5 +5,5 @@ vim.cmd.colorscheme 'tokyonight-night'
 vim.o.shell = 'nu.exe'
 vim.opt.sh = 'nu'
 vim.opt.shellcmdflag = '-c'
-vim.opt.shellquote = ""
-vim.opt.shellxquote = ""
+vim.opt.shellquote = ''
+vim.opt.shellxquote = ''

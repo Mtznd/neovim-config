@@ -10,3 +10,5 @@
       * then you need to set the environment variable `CC` to point to the compiler
         * by default, scoop should have installed it to `C:\Users\<user>\scoop\apps\mingw\current\bin\cc.exe`
 * ripgrep. `scoop install ripgrep`
+
+* stylua. used to format lua files `scoop install stylua`

@@ -55,14 +55,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end,
       })
 
-      vim.diagnostic.config({
-          virtual_text = true,
-          signs = true,
-          underline = true,
-          severity_sort = true,
-      })
-
-
+      vim.diagnostic.config {
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        severity_sort = true,
+      }
     end
 
     -- The following code creates a keymap to toggle inlay hints in your
@@ -83,17 +81,18 @@ local servers = {
   gopls = {
     on_init = function()
       vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	  pattern = {'*.go'},
-	callback = function(ev)
+        pattern = { '*.go' },
+        callback = function(ev)
           local view = vim.fn.winsaveview()
-          vim.cmd("%!gofmt")
+          vim.cmd '%!gofmt'
           vim.fn.winrestview(view)
-	end
+        end,
       })
-    end
+    end,
   },
 
-  stylua = {}, -- Used to format Lua code
+  --stylua = {}, -- Used to format Lua code (not sure why this is needed here.
+  -- I installed stylua manullay and used the conform plugin and everything seems to work
 
   -- Special Lua Config, as recommended by neovim help docs
   lua_ls = {
@@ -135,6 +134,7 @@ vim.pack.add {
   'http://github.com/mason-org/mason.nvim',
   'http://github.com/mason-org/mason-lspconfig.nvim',
   'http://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
+  'https://github.com/stevearc/conform.nvim.git',
 }
 
 -- Automatically install LSPs and related tools to stdpath for Neovim
@@ -158,3 +158,14 @@ for name, server in pairs(servers) do
   vim.lsp.config(name, server)
   vim.lsp.enable(name)
 end
+
+require('conform').setup {
+  formatters_by_ft = {
+    lua = { 'stylua' },
+  },
+  format_on_save = {
+    lsp_fallback = false,
+    async = false,
+    timeout_ms = 1000,
+  },
+}
