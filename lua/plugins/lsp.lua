@@ -127,6 +127,10 @@ local servers = {
       },
     },
   },
+
+  ts_ls = {
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
+  },
 }
 
 vim.pack.add {
